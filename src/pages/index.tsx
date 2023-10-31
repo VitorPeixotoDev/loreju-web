@@ -1,9 +1,14 @@
-import styles from '../styles/Home.module.scss'
+import Head from "next/head"
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <h1>Loreju</h1>
-    </div>
+    <>
+      <Head>
+        <title>Loreju - login</title>
+      </Head>
+      <div>
+        <h1>Loreju</h1>
+      </div>
+    </>
   )
 }
