@@ -1,5 +1,6 @@
 import { createContext, ReactNode, useState } from 'react'
 import { destroyCookie, setCookie, parseCookies } from 'nookies'
+import { toast } from 'react-toastify'
 import Router from 'next/router'
 
 import { api } from '../services/apiClient'
@@ -69,10 +70,12 @@ export function AuthProvider({ children }: AuthProviderProps){
 
             //persistir token em requisições futuras
             api.defaults.headers['Authorization'] = `Bearer ${token}`
+            toast.success('Bem-vinda(o) ao Loreju!')
 
             //redirecionar user para /dashboard
             Router.push('/dashboard')
         } catch (error) {
+            toast.error('Há algo errado com suas informações.')
             console.log('ALERT [01202] ', error)
         }
     }
@@ -85,9 +88,10 @@ export function AuthProvider({ children }: AuthProviderProps){
                 password
             })
 
-            console.log('Cadastrado com sucesso!')
+            toast.success('Conta criada com sucesso!')
             Router.push('/')
         } catch (error) {
+            toast.error('Há algo errado com suas informações.')
             console.log('ALERT [01202] ', error)
         }
     }

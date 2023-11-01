@@ -3,6 +3,7 @@ import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import styles from '../../styles/home.module.scss'
+import { toast } from 'react-toastify'
 
 import { AuthContext } from '../../contexts/AuthContext'
 import { Input } from '../../components/ui/Input'
@@ -22,7 +23,7 @@ export default function SignUp() {
     event.preventDefault()
 
     if(name == '' || email == '' || password == ''){
-      alert('Preencha corretamente todos os campos.')
+      toast.warning('Preencha corretamente todos os campos.')
       return
     } 
 
