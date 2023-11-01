@@ -1,4 +1,4 @@
-import { FormEvent, useContext } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
@@ -13,16 +13,21 @@ import logo2 from '../../public/logo1.png'
 
 export default function Home() {
   const { signIn } = useContext(AuthContext)
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
 
   const handleLogin = async (event: FormEvent) => {
     event.preventDefault()
 
     let data = {
-      email: "email@email.com",
-      password: '123123'
+      email,
+      password
     }
 
     await signIn(data)
+    setEmail('')
+    setPassword('')
   }
 
   return (
@@ -40,10 +45,14 @@ export default function Home() {
               <Input 
                 placeholder="digite seu email"
                 type='text'
+                value={email}
+                onChange={e => setEmail(e.target.value)}
               />
               <Input 
                 placeholder="digite sua senha"
                 type='password'
+                value={password}
+                onChange={e => setPassword(e.target.value)}
               />
               <Button
                 type='submit'
