@@ -16,7 +16,7 @@ export default function Home() {
       <div>
         <div className={styles.containerCenter}>
           <div>
-            <Image src={logo2} alt="logo_loreju"/>
+            <Image className={styles.imgLogo} src={logo2} alt="logo_loreju"/>
           </div>
           <div className={styles.login}>
             <form>
@@ -35,6 +35,7 @@ export default function Home() {
                 acessar
               </Button>
             </form>
+            <a className={styles.text}>cadastrar-se</a>
           </div>
         </div>
       </div>
