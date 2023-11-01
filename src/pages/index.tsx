@@ -3,6 +3,7 @@ import Image from "next/image"
 import styles from '../styles/home.module.scss'
 
 import { Input } from '../components/ui/Input'
+import { Button } from "../components/ui/Button"
 
 import logo2 from '../../public/logo1.png'
 
@@ -14,7 +15,9 @@ export default function Home() {
       </Head>
       <div>
         <div className={styles.containerCenter}>
-          <Image src={logo2} alt="logo_loreju"/>
+          <div>
+            <Image src={logo2} alt="logo_loreju"/>
+          </div>
           <div className={styles.login}>
             <form>
               <Input 
@@ -25,6 +28,12 @@ export default function Home() {
                 placeholder="digite sua senha"
                 type='password'
               />
+              <Button
+                type='submit'
+                loading={false}
+              >
+                acessar
+              </Button>
             </form>
           </div>
         </div>
