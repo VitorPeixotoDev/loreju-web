@@ -1,18 +1,18 @@
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
-import styles from '../styles/home.module.scss'
+import styles from '../../styles/home.module.scss'
 
-import { Input } from '../components/ui/Input'
-import { Button } from "../components/ui/Button"
+import { Input } from '../../components/ui/Input'
+import { Button } from "../../components/ui/Button"
 
-import logo2 from '../../public/logo1.png'
+import logo2 from '../../../public/logo1.png'
 
-export default function Home() {
+export default function SignUp() {
   return (
     <>
       <Head>
-        <title>Loreju | login</title>
+        <title>Loreju | cadastre-se</title>
       </Head>
       <div>
         <div className={styles.containerCenter}>
@@ -20,7 +20,12 @@ export default function Home() {
             <Image className={styles.imgLogo} src={logo2} alt="logo_loreju"/>
           </div>
           <div className={styles.login}>
+            <h1>criando nova conta</h1>
             <form>
+            <Input 
+                placeholder="digite seu nome"
+                type='text'
+              />
               <Input 
                 placeholder="digite seu email"
                 type='text'
@@ -33,13 +38,13 @@ export default function Home() {
                 type='submit'
                 loading={false}
               >
-                acessar
+                cadastrar
               </Button>
             </form>
             <Link
               className={styles.text} 
-              href='./signup'>
-              cadastrar-se
+              href='./'>
+              já possuo uma conta
             </Link>
             
           </div>
