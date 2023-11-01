@@ -1,7 +1,10 @@
+import { FormEvent, useContext } from 'react'
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
 import styles from '../styles/home.module.scss'
+
+import { AuthContext } from '../contexts/AuthContext'
 
 import { Input } from '../components/ui/Input'
 import { Button } from "../components/ui/Button"
@@ -9,6 +12,19 @@ import { Button } from "../components/ui/Button"
 import logo2 from '../../public/logo1.png'
 
 export default function Home() {
+  const { signIn } = useContext(AuthContext)
+
+  const handleLogin = async (event: FormEvent) => {
+    event.preventDefault()
+
+    let data = {
+      email: "email@email.com",
+      password: '123123'
+    }
+
+    await signIn(data)
+  }
+
   return (
     <>
       <Head>
@@ -20,7 +36,7 @@ export default function Home() {
             <Image className={styles.imgLogo} src={logo2} alt="logo_loreju"/>
           </div>
           <div className={styles.login}>
-            <form>
+            <form onSubmit={handleLogin}>
               <Input 
                 placeholder="digite seu email"
                 type='text'
