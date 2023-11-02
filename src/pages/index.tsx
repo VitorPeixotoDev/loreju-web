@@ -2,6 +2,7 @@ import { FormEvent, useContext, useState } from 'react'
 import Head from "next/head"
 import Image from "next/image"
 import Link from "next/link"
+import { canSRRGuest } from '../utils/canSSRGuest'
 import styles from '../styles/home.module.scss'
 import { toast } from 'react-toastify'
 
@@ -82,3 +83,9 @@ export default function Home() {
     </>
   )
 }
+
+export const getServerSideProps = canSRRGuest(async ctx => {
+  return {
+    props: {}
+  }
+})
