@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useState, useEffect } from 'react'
 import { destroyCookie, setCookie, parseCookies } from 'nookies'
 import { toast } from 'react-toastify'
 import Router from 'next/router'
@@ -48,6 +48,25 @@ export const signOut = () => {
 export function AuthProvider({ children }: AuthProviderProps){
     const [user, setUser] = useState<UserProps>()
     const isAuthenticated = !!user
+
+    useEffect(() => {
+        const {'@loreju.token': token} = parseCookies()
+
+        if(token){
+            api.get('/me').then(response => {
+                const {id, name, email} = response.data
+
+                setUser({
+                    id,
+                    name,
+                    email
+                })
+            })
+            .catch(() => {
+                signOut()
+            })
+        }
+    }, [])
 
     const signIn = async ({email, password}: SignInProps) => {
         try {
