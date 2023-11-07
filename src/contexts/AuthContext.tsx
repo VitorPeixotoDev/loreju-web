@@ -89,7 +89,7 @@ export function AuthProvider({ children }: AuthProviderProps){
 
             //persistir token em requisições futuras
             api.defaults.headers['Authorization'] = `Bearer ${token}`
-            toast.success('Bem-vinda(o) ao Loreju!')
+            toast.success(`Bem-vinda(o) ao Loreju, ${name}!`)
 
             //redirecionar user para /dashboard
             Router.push('/dashboard')
