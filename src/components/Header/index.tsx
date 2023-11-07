@@ -1,10 +1,15 @@
+import { useContext } from 'react'
 import styles from './styles.module.scss'
 import Link from 'next/link'
 import { FiLogOut } from 'react-icons/fi'
 
+import { AuthContext } from '../../contexts/AuthContext' 
+
 
 
 export const Header = () => {
+    const { signOut } = useContext(AuthContext)
+
     return(
         <header className={styles.headerContainer}>
             <div className={styles.headerContent}>
@@ -12,7 +17,7 @@ export const Header = () => {
                     <img src='./logo2.png' width={100} height={80} />
                 </Link>
 
-                <nav>
+                <nav className={styles.menuNav}>
                     <Link href='category'>
                         categoria
                     </Link>
@@ -21,7 +26,7 @@ export const Header = () => {
                         menu
                     </Link>
 
-                    <button>
+                    <button onClick={signOut}>
                         <FiLogOut color='#722f37' size={24}/>
                     </button>
 
