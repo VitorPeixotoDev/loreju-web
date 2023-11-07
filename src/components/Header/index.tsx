@@ -21,6 +21,10 @@ export const Header = () => {
                     <Link href='category'>
                         categoria
                     </Link>
+
+                    <Link href='product'>
+                        produto
+                    </Link>
                     
                     <Link href='product'>
                         menu
