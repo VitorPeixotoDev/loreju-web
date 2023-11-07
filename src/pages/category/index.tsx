@@ -3,13 +3,23 @@ import Head from "next/head"
 import { Header } from '../../components/Header'
 import styles from './styles.module.scss'
 
+import { setupAPIClient } from '../../services/api'
+import { toast } from 'react-toastify'
+
 const Category = () => {
     const [name, setName] = useState('')
 
     const handleRegister = async (event: FormEvent) => {
         event.preventDefault()
 
-        alert(`CATEGORIA ${name}`)
+        if(name === '') return 
+        const apiClient = setupAPIClient()
+        await apiClient.post('/category', {
+            name
+        })
+
+        toast.success(`Categoria "${name}" cadastrada com sucesso!`)
+        setName('')
     }
 
     return(
