@@ -1,0 +1,35 @@
+.container {
+    width: 620px;
+    background-color: var(--dark-700);
+    color: var(--light-dark)
+}
+.container h2 {
+    margin: 1rem 0;
+}
+
+.containerItem {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.buttonOrder {
+    margin-top: 1.5rem;
+    background-color: var(--green);
+    border: 0;
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+    color: var(--dark-900)
+}
+
+@media screen and (max-width: 700px){
+    .container {
+        width: 400px;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .container {
+        width: 300px;
+    }
+}
